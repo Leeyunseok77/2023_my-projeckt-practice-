@@ -4,11 +4,22 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 6;                     //변수 이동 스피스 조절하게 선언
-    public  GameObject PlayerPivot;            //시야를 어느 각도로 보는지 설정학 ㅣ위한 위치 Piovt
-    Camera viewCamera;                              //apdls zkapfkfmf rkwudhrl dnlgks zkapfk zmffotm tjsdjs
-    Vector3 velocity;                               //이동 방향 벡터를 선언
-    public ProjectileController projectileController;  //발사체 클래스 선언
+    public float moveSpeed = 6;                         //변수 이동 스피스 조절하게 선언
+    public  GameObject PlayerPivot;                     //시야를 어느 각도로 보는지 설정학 ㅣ위한 위치 Piovt
+    Camera viewCamera;                                  //apdls zkapfkfmf rkwudhrl dnlgks zkapfk zmffotm tjsdjs
+    Vector3 velocity;                                   //이동 방향 벡터를 선언
+    public ProjectileController projectileController;   //발사체 클래스 선언
+
+    public int Player_Hp = 50;                          //플레이어 HP 선언                              
+    public void Damanged(int Damage)                    // 데미지 받는 함수 생성
+    {
+        Player_Hp -= Damage;                           //받은 데미지 HP에 반영
+
+        if (Player_Hp < 0)                             //0 이하로 떨어질시 
+        {
+            Destroy(this.gameObject);                   //몬스터 오브젝트 파괴
+        }
+    }
 
 
     void Start()
